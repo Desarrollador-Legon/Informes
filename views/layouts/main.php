@@ -27,21 +27,46 @@ AppAsset::register($this);
 
 <header>
     <?php
-    NavBar::begin([
+     NavBar::begin([
         'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
+            'class' => 'minavbar navbar-expand-md navbar-light  fixed-top',
         ],
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
+            /*['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Contact', 'url' => ['/site/contact']],*/
+
+            ['label' => ' Terceros',  'items' => [
+                ['label' => 'Vendedores ', 'url' => '#'],
+                ['label' => 'Cobradores ', 'url' => '#'],
+                ['label' => 'Técnicos ', 'url' => '#'],
+                ],
+            ],
+            ['label' => 'Clientes',  'items' => [
+                ['label' => 'Clientes', 'url' => '#'],
+                ['label' => 'Contratos', 'url' => '#'],
+                ],
+            ],
+            ['label' => 'Cartera',  'items' => [
+                
+                ['label' => 'Conectados por Oficina', 'url' => ['/cartera']],
+                ],
+            ],
+            ['label' => 'Servicios',  'items' => [
+                ['label' => 'Nuevos/Pendientes por Oficina', 'url' => ['/servicios']],
+                ]
+            ],
+
+            
+
+
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
+                ['label' => 'Iniciar Sesion', 'url' => ['/site/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
@@ -70,8 +95,7 @@ AppAsset::register($this);
 
 <footer class="footer mt-auto py-3 text-muted">
     <div class="container">
-        <p class="float-left">&copy; My Company <?= date('Y') ?></p>
-        <p class="float-right"><?= Yii::powered() ?></p>
+        
     </div>
 </footer>
 
